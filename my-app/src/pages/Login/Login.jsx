@@ -3,7 +3,6 @@ import logo from "../../componets/Header/img/Logo.png";
 import i from "./img/i.png";
 import { Link, Navigate } from "react-router-dom";
 import React from "react";
-import axios from "../../axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { fetchLogin, selectIsAuth } from "../../redux/slices/login";
@@ -21,7 +20,6 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     const data = await dispatch(fetchLogin(values));
-
     if (!data.payload) {
         alert('Неудалось авторизоваться')
         console.log(data.payload)

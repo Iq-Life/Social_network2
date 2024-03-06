@@ -9,8 +9,8 @@ export const register = async (req, res) => {
     const password = await bcrypt.hash(req.body.password, salt);
 
     const doc = new userModel({
-      email: req.body.email,
       fullName: req.body.fullName,
+      email: req.body.email,
       avatarUrl: req.body.avatarUrl,
       password,
     })

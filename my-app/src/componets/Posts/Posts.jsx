@@ -1,6 +1,5 @@
 import s from "./posts.module.css";
 import foto from "./img/groupAva.png";
-import posts from "./img/posts.png";
 import like from "./img/like.png";
 import share from "./img/share.png";
 import comment from "./img/comment.png";
