@@ -7,18 +7,19 @@ import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import { fetchPosts } from "../../redux/slices/posts";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "../../axios";
-import FullPosts from "./FullPosts/FullPosts";
-import App from "./../../App";
 
 const Posts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { posts } = useSelector((state) => state.posts);
+  const onClickPost = async (obj) => {
 
-  const onClickPost = async (id) => {
-    // debugger
-    <FullPosts id={id} />;
+// console.log(abjArr[0][1])
+    navigate(`/posts/:${obj._id}`,{
+      state: {
+        obj: obj,
+      }
+    })
   };
   const isPostsLoading = posts.status === "loading";
   React.useEffect(() => {
@@ -34,7 +35,7 @@ const Posts = () => {
             key={obj._id}
             className={s.mainPosts}
             onClick={() => {
-              onClickPost(obj._id);
+              onClickPost(obj);
             }}
           >
             <div className={s.posts}>

@@ -1,6 +1,6 @@
 // import s from './app.module.css'
 import React from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation, useSearchParams } from 'react-router-dom'
 import Profile from './componets/Profile/Profile';
 import Message from './pages/Message/Message';
 import Home from './pages/Home/Home';
@@ -13,12 +13,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAuthMe, selectIsAuth } from './redux/slices/login';
 import FullPosts from './componets/Posts/FullPosts/FullPosts';
 import Posts from './componets/Posts/Posts';
+import { useNavigate } from 'react-router-dom';
 
-function App({id}) {
+function App() {
   const dispatch = useDispatch()
-  const test = '/posts'
+  const {state} = useLocation()
   React.useEffect(() =>{
-    // console.log(posts)
     dispatch(fetchAuthMe())
   }, [])
   return (
@@ -32,7 +32,7 @@ function App({id}) {
         <Route path="/group" element={<Group />} />
         <Route path='/friends' element={<Friends />} />
         <Route path='/music' element={<Music />} />
-        <Route path={`${test}`} element={<FullPosts />} />
+        <Route path='/posts/:obj' element={<FullPosts state={state}/>} />
       </Routes>
     </>
   );  
