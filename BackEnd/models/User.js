@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
     required: true, //Это свойство обязательно при создание пользователя
   },
   avatarUrl: {
-    type:String, //Это свойство обязательно при создание пользователя
+    type:String,
   },
 }, {
   timestamps: true,

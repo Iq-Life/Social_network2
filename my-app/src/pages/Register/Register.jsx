@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { fetchRegister } from "../../redux/slices/register";
 import { selectIsAuth } from "../../redux/slices/login";
-const Register = (props) => {
+import React from "react";
+const Register = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
 
@@ -24,17 +25,15 @@ const Register = (props) => {
 
   const onClickRegister = async (values) => {
     const data = await dispatch(fetchRegister(values));
-    console.log("values => ", values);
+    console.log('values => ', values)
     if (!data.payload) {
-      alert("Неудалось авторизоваться");
-      console.log(data.payload);
+      alert("Неудалось зарегистрироваться");
     }
     if (data.payload) {
-      console.log(data.payload);
       window.localStorage.setItem("token", data.payload.token);
-      window.location.reload();
     }
   };
+
   if (isAuth) {
     return <Navigate to="/" />;
   }
@@ -66,18 +65,18 @@ const Register = (props) => {
               />
               <br />
               <input
-                {...register("surName", { required: "Укажите Имя" })}
+                {...register("Surname", { required: "Укажите Имя" })}
                 className={s.input}
                 type="text"
                 placeholder="Фамилия"
-              />
-              <br />
+              /> */}
+              {/* <br />
               <input
                 {...register("Login", { required: "Укажите Имя" })}
                 className={s.input}
                 type="text"
                 placeholder="Логин"
-              />
+              /> */}
               <br />
               <input
                 {...register("email", { required: "Укажите Имя" })}
@@ -85,13 +84,13 @@ const Register = (props) => {
                 type="text"
                 placeholder="Почта"
               />
-              <br />
+              {/* <br />
               <input
                 {...register("phone", { required: "Укажите Имя" })}
                 className={s.input}
                 type="text"
                 placeholder="Телефон"
-              />
+              /> */}
               <br />
               <input
                 {...register("password", { required: "Укажите Имя" })}
@@ -101,9 +100,7 @@ const Register = (props) => {
               />
               <br />
               <br />
-              <button type="submit" className={s.buttonRegister}>
-                Войти
-              </button>
+              <button type="submit" className={s.buttonRegister}>Войти</button>
               <div>
                 <Link className={s.autho} to="/login">
                   Авторизоваться

@@ -10,6 +10,7 @@ export const register = async (req, res) => {
 
     const doc = new userModel({
       fullName: req.body.fullName,
+      email: req.body.email,
       surName: req.body.surName,
       login: req.body.login,
       email: req.body.email,

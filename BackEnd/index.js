@@ -49,7 +49,7 @@ app.get('/posts/:id', postController.getOne)
 // app.delete('/posts/:id', cheakAuth, postController.remove)
 // app.patch('/posts/:id', cheakAuth, postCreateValidator, handleValidationEror, postController.update)
 
-app.listen(3000, (err) => {
+app.listen(3002, (err) => {
   if (err) {
     return console.log('=>',err)
   }

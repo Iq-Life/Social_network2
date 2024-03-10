@@ -20,7 +20,6 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     const data = await dispatch(fetchLogin(values));
-
     if (!data.payload) {
         alert('Неудалось авторизоваться')
     }    
